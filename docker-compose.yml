@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: nu-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: nu_db
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  # (オプション) ブラウザでDBを操作したいなら追加
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: nu-phpmyadmin
+    links:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: password
