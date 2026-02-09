@@ -16,8 +16,6 @@ func main() {
 
     e.POST("/login", handlers.Login)
     e.POST("/members", handlers.CreateMember)
-    e.PATCH("/rentals/toggle", handlers.ToggleRental)
-    e.GET("/rentals/status", handlers.GetRentalStatus)
 
     e.Logger.Fatal(e.Start(":8080"))
 }

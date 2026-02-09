@@ -10,11 +10,3 @@ type Member struct {
     Grade         string `json:"grade"`
     StudentNumber string `json:"student_num"`
 }
-
-type Rental struct {
-    gorm.Model
-    MemberID uint   
-    ItemName string 
-    ImageURL string `json:"image_url"`
-    IsRented bool   `json:"isRented"`
-}
