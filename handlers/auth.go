@@ -19,7 +19,7 @@ func Login(c echo.Context) error {
 
 	var member models.Member
 
-	result := database.DB.Where("user_name = ? AND password = ?", req.username, req.password).First(&member)
+	result := database.DB.Where("username = ? AND password = ?", req.Username, req.Password).First(&member)
 
 	if result.Error != nil {
 		return c.JSON(http.StatusUnauthorized, map[string]string{"message": "ユーザー名またはパスワードが違います"})
