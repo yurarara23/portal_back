@@ -9,8 +9,8 @@ import (
 
 func Login(c echo.Context) error {
 	type LoginRequest struct {
-		Username string `json:"username"`
-		Password string `json:"password"`
+		username string `json:"username"`
+		password string `json:"password"`
 	}
 	req := new(LoginRequest)
 	if err := c.Bind(req); err != nil {
@@ -19,7 +19,7 @@ func Login(c echo.Context) error {
 
 	var member models.Member
 
-	result := database.DB.Where("user_name = ? AND password = ?", req.Username, req.Password).First(&member)
+	result := database.DB.Where("user_name = ? AND password = ?", req.username, req.password).First(&member)
 
 	if result.Error != nil {
 		return c.JSON(http.StatusUnauthorized, map[string]string{"message": "ユーザー名またはパスワードが違います"})

@@ -1,0 +1,15 @@
+@hostname = localhost
+@port = 8080
+@baseUrl = http://{{hostname}}:{{port}}
+
+###
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+    "username": "testman",
+    "password": "1234",
+    "department": "理工-情報",
+    "grade": "B3",
+    "student_num": "1111222233334444"
+}

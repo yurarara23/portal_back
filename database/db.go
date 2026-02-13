@@ -16,5 +16,5 @@ func InitDB() {
         panic("データベース接続に失敗しました")
     }
 
-    DB.AutoMigrate(&models.Member{}, &models.Rental{})
+    DB.AutoMigrate(&models.Member{})
 }
