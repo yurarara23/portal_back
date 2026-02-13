@@ -9,8 +9,8 @@ import (
 
 func Login(c echo.Context) error {
 	type LoginRequest struct {
-		username string `json:"username"`
-		password string `json:"password"`
+		Username string `json:"username"`
+		Password string `json:"password"`
 	}
 	req := new(LoginRequest)
 	if err := c.Bind(req); err != nil {
