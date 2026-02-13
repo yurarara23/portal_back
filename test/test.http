@@ -2,65 +2,110 @@
 @port = 8080
 @baseUrl = http://{{hostname}}:{{port}}
 
-###
+### 1: yurarara
 POST {{baseUrl}}/members
 Content-Type: application/json
 
-[
-  {
-    "username": "yurarara",
-    "password": "1234",
-    "department": "理工-情報",
-    "grade": "B3",
-    "student_num": "2024040751440290"
-  },
-  {
-    "username": "nero",
-    "password": "1234",
-    "department": "工学部 電気電子工学科",
-    "grade": "B3",
-    "student_num": "2024040950400700"
-  },
-  {
-    "username": "iwa",
-    "password": "1234",
-    "department": "理工学部 応用情報工学科",
-    "grade": "B3",
-    "student_num": "2024040751440620"
-  },
-  {
-    "username": "syama",
-    "password": "1234",
-    "department": "理工学部 応用情報工学科",
-    "grade": "B3",
-    "student_num": "2024040751440720"
-  },
-  {
-    "username": "mizmelon",
-    "password": "1234",
-    "department": "理工学部 交通システム工学科",
-    "grade": "1年",
-    "student_num": "2024040750240590"
-  },
-  {
-    "username": "potty",
-    "password": "1234",
-    "department": "芸術学部 文芸学科",
-    "grade": "B3",
-    "student_num": "2024040550500240"
-  },
-  {
-    "username": "FF",
-    "password": "1234",
-    "department": "理工 情報",
-    "grade": "B3",
-    "student_num": ""
-  },
-  {
-    "username": "yoshi_pawn",
-    "password": "1234",
-    "department": "理工学部 電気工学科",
-    "grade": "B2",
-    "student_num": "2024040550500240"
-  }
-]
+{
+  "username": "yurarara",
+  "password": "1234",
+  "department": "理工-情報",
+  "grade": "B3",
+  "student_num": "2024040751440290"
+}
+
+### 2: nero
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "nero",
+  "password": "1234",
+  "department": "工-電気電子",
+  "grade": "B3",
+  "student_num": "2024040950400700"
+}
+
+### 3: iwa
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "iwa",
+  "password": "1234",
+  "department": "理工-情報",
+  "grade": "B3",
+  "student_num": "2024040751440620"
+}
+
+### 4: syama
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "syama",
+  "password": "1234",
+  "department": "理工-情報",
+  "grade": "B3",
+  "student_num": "2024040751440720"
+}
+
+### 5: mizmelon
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "mizmelon",
+  "password": "1234",
+  "department": "理工学-交通システム",
+  "grade": "B3",
+  "student_num": "2024040750240590"
+}
+
+### 6: potty
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "potty",
+  "password": "1234",
+  "department": "芸術-文芸",
+  "grade": "B3",
+  "student_num": "2024040550500240"
+}
+
+### 7: FF
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "FF",
+  "password": "1234",
+  "department": "理工-情報",
+  "grade": "B3",
+  "student_num": ""
+}
+
+### 8: yoshi_pawn
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "yoshi_pawn",
+  "password": "1234",
+  "department": "理工-電気",
+  "grade": "B2",
+  "student_num": "2024040550500240"
+}
+
+### 8: alma
+POST {{baseUrl}}/members
+Content-Type: application/json
+
+{
+  "username": "alma",
+  "password": "1234",
+  "department": "芸術-音楽",
+  "grade": "B4",
+  "student_num": "2023040550400050"
+}
