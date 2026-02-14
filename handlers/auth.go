@@ -5,6 +5,7 @@ import (
 	"go_mysql/database"
 	"go_mysql/models"
 	"github.com/labstack/echo/v4"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func Login(c echo.Context) error {
