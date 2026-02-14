@@ -12,7 +12,13 @@ func CreateMember(c echo.Context) error {
 	if err := c.Bind(m); err != nil {
 		return err
 	}
+
+	if err := m.HashPassword(); err != nil {
+        return c.JSON(http.StatusInternalServerError, map[string]string{"message": "ハッシュ化に失敗しました"})
+    }
+
 	database.DB.Create(&m)
+
 	return c.JSON(http.StatusCreated, m)
 }
 

@@ -19,11 +19,14 @@ func Login(c echo.Context) error {
 
 	var member models.Member
 
-	result := database.DB.Where("username = ? AND password = ?", req.Username, req.Password).First(&member)
+	if err := database.DB.Where("username = ?", req.Username).First(&member).Error; err != nil {
+        return echo.ErrUnauthorized
+    }
 
-	if result.Error != nil {
-		return c.JSON(http.StatusUnauthorized, map[string]string{"message": "ユーザー名またはパスワードが違います"})
-	}
+	err := bcrypt.CompareHashAndPassword([]byte(member.Password), []byte(req.Password))
+    if err != nil {
+        return echo.ErrUnauthorized
+    }
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "ログイン成功",
