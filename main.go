@@ -14,8 +14,18 @@ func main() {
     e := echo.New()
     e.Use(middleware.Logger(), middleware.Recover(), middleware.CORS())
 
+    // 公開ルート
     e.POST("/login", handlers.Login)
     e.POST("/members", handlers.CreateMember)
+
+    // 制限ルート（グループ化すると管理しやすい）
+    r := e.Group("/auth")
+    r.Use(echojwt.WithConfig(echojwt.Config{
+        SigningKey: []byte("secret"), // Login時と同じ鍵を使う
+    }))
+
+    // /auth/members は有効なトークンがないとアクセス不可
+    r.GET("/member", handlers.GetMe)
 
     e.Logger.Fatal(e.Start(":8080"))
 }

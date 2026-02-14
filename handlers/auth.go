@@ -33,7 +33,7 @@ func Login(c echo.Context) error {
 	claims := &jwt.MapClaims{
         "name":  member.Username,
         "admin": true, // 権限など
-        "exp":   time.Now().Add(time.Hour * 72).Unix(), // 有効期限（3日間）
+        "exp":   time.Now().Add(time.Hour * 1).Unix(), // 有効期限（1時間）
     }
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)

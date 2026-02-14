@@ -22,8 +22,21 @@ func CreateMember(c echo.Context) error {
 	return c.JSON(http.StatusCreated, m)
 }
 
-func GetMembers(c echo.Context) error {
-	var members []models.Member
-	database.DB.Find(&members)
-	return c.JSON(http.StatusOK, members)
+func GetMe(c echo.Context) error {
+    // 1. トークンからユーザー情報（Claims）を取り出す
+    user := c.Get("user").(*jwt.Token)
+    claims := user.Claims.(jwt.MapClaims)
+    
+    // Login時に "name" というキーで保存した値を取り出す
+    username := claims["name"].(string)
+
+    // 2. そのユーザー名でDBを検索
+    var member models.Member
+    if err := database.DB.Where("username = ?", username).First(&member).Error; err != nil {
+        return c.JSON(http.StatusNotFound, map[string]string{"message": "ユーザーが見つかりません"})
+    }
+
+    // パスワードは隠して返す
+    member.Password = ""
+    return c.JSON(http.StatusOK, member)
 }
