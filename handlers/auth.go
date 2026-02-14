@@ -6,6 +6,7 @@ import (
 	"go_mysql/models"
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
+	"github.com/golang-jwt/jwt/v5"
 )
 
 func Login(c echo.Context) error {
@@ -29,8 +30,22 @@ func Login(c echo.Context) error {
         return echo.ErrUnauthorized
     }
 
+	claims := &jwt.MapClaims{
+        "name":  member.Username,
+        "admin": true, // 権限など
+        "exp":   time.Now().Add(time.Hour * 72).Unix(), // 有効期限（3日間）
+    }
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+
+    // 署名（秘密鍵は本来環境変数などで管理する）
+    t, err := token.SignedString([]byte("secret")) 
+    if err != nil {
+        return err
+    }
+
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "ログイン成功",
-		"user":    member,
+		"token": t
 	})
 }
