@@ -5,6 +5,7 @@ import (
 	"go_mysql/database"
 	"go_mysql/models"
 	"github.com/labstack/echo/v4"
+	"github.com/golang-jwt/jwt/v5"
 )
 
 func CreateMember(c echo.Context) error {

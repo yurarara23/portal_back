@@ -1,10 +1,12 @@
 package main
 
 import (
-    "go_mysql/database"
-    "go_mysql/handlers"
-    "github.com/labstack/echo/v4"
-    "github.com/labstack/echo/v4/middleware"
+	"go_mysql/database"
+	"go_mysql/handlers"
+
+	echojwt "github.com/labstack/echo-jwt/v4"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {

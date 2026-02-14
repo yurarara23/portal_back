@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"go_mysql/database"
 	"go_mysql/models"
+	"time"
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
 	"github.com/golang-jwt/jwt/v5"
@@ -46,6 +47,6 @@ func Login(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "ログイン成功",
-		"token": t
+		"token": t, //複数行なら,ないとエラーになる
 	})
 }
