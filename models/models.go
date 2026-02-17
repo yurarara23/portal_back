@@ -1,8 +1,8 @@
 package models
 
 import (
-    "gorm.io/gorm"
-    "golang.org/x/crypto/bcrypt"
+	"golang.org/x/crypto/bcrypt"
+	"gorm.io/gorm"
 )
 
 type Member struct {
@@ -21,4 +21,11 @@ func (m *Member) HashPassword() error {
     }
     m.Password = string(hashedPassword)
     return nil
+}
+
+type RentalItem struct {
+    gorm.Model
+    Name       string `json:"name"`
+    Img        string `json:"img"`
+    RenterName string `json:"renter_name"`
 }
